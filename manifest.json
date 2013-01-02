@@ -1,0 +1,43 @@
+{
+	"name":"Keyframe builder",
+	"version":"0.3.0",
+	"manifest_version":2,
+	"description":"tools for build keyframe animation",
+	"browser_action":{
+		"default_icon":"logo.jpg"
+	},
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"permissions":[
+		"http://habrahabr.ru/*",
+		"https://*/*"
+	],
+	"web_accessible_resources":[
+		"content/template/*"
+	],
+	"content_scripts":[
+		{
+			"matches":["http://*/*","https://*/*"],
+			"css":[
+				"lib/bootstrap/css/bootstrap.css",
+				"content/css/style.css"
+
+			],
+			"js":[
+				"lib/jquery-1.8.3.js",
+				"lib/bootstrap/js/bootstrap.js",
+				"lib/knockout-2.2.0.debug.js",
+				"lib/underscore.js",
+				"lib/async.js",
+				"content/js/point.js",
+				"content/js/utils.js",
+				"content/js/mouseselector.js",
+				"content/js/frame.js",
+				"content/js/keyframes.js",
+				"content/js/builder.js",
+				"content/js/init.js"
+			]
+		}
+	]
+}

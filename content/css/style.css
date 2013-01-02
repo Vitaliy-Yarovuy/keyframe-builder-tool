@@ -1,0 +1,119 @@
+#keyb .navbar{
+	-webkit-transition: all 500ms;
+	-webkit-transform: translate3d(0,-120%,0);
+	z-index: 1000;
+}
+
+#keyb.active .navbar{
+	-webkit-transform: translate3d(0,0,0);
+}
+
+#keyb .container{
+	text-align: left;
+}
+#keyb .navbar .navbar-inner .container > *{
+	float: left;
+	margin: 4px 20px 6px 0;
+}
+
+#keyb .container .tabbable{
+	margin-top: 5px;
+}
+
+#keyb .tabbable .nav-pills.pills-small > li > a{
+	padding: 4px 10px;
+	font-size: 11.9px;
+	border-radius: 3px;
+}
+
+
+#keyb .under-pages {
+	background-color: #ffffff;
+	border-bottom: 1px solid #ddd;
+	*zoom: 1;
+	outline: none;
+	-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+#keyb .under-pages .tab-pane{
+	padding-top: 8px;
+
+}
+
+#keyb .under-pages .tab-pane form{
+	margin-bottom: 5px;
+}
+
+
+/*#keyb .btn-toolbar.disabled{*/
+	/*pointer-events: none;*/
+/*}*/
+
+/*********  MouseSelector ************/
+.keyb-pretendant,
+.keyb-target{
+	position: absolute;
+	border-radius: 2px;
+	border: 2px solid yellow;
+	background: rgba(255,255,0,0.3);
+	left: -50px;
+	bottom: -50px;
+	width: 10px;
+	height: 10px;
+	-webkit-transition: all 400ms;
+	pointer-events: none;
+}
+
+.keyb-target{
+	border: 2px solid #4169e1;
+	background: rgba(65,105,225,0.3);
+	-webkit-transition: all 100ms;
+}
+
+.keyb-target.active{
+	pointer-events: auto;
+}
+
+
+/*******************  keyframe-options-page   ***********************/
+
+
+#keyb .keyframe-options-page .form-horizontal .control-group {
+	margin-bottom: 5px;
+}
+
+#keyb .keyframe-options-page .form-horizontal .input-prepend .add-on,
+#keyb .keyframe-options-page .form-horizontal input{
+	line-height: 14px;
+	height: 14px;
+}
+
+
+
+
+#keyb .keyframe-options-page .form-horizontal .control-label{
+	width: 120px;
+}
+
+#keyb .keyframe-options-page .form-horizontal .controls{
+	margin-left: 140px;
+}
+
+#keyb .keyframe-options-page .form-horizontal .control-label.label-small{
+	width: 60px;
+}
+
+#keyb .keyframe-options-page .form-horizontal .control-label.label-small + .controls{
+	margin-left: 80px;
+}
+
+#keyb .keyframe-options-page .form-horizontal .control-label.width56{
+	width: 46px;
+}
+
+#keyb .keyframe-options-page .form-horizontal .control-label.width56 + .controls{
+	margin-left: 66px;
+}
+

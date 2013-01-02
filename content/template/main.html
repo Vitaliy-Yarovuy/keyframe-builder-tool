@@ -1,0 +1,56 @@
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<div class="btn-toolbar">
+				<div class="btn btn-small" data-bind="css: { active: isSeletAreaMode }, click: toggleSelectAreaMode ">
+					select area
+				</div>
+			</div>
+			<div class="btn-toolbar"  data-bind="css: { disabled: !seletedArea() }" >
+				<div class="btn-group">
+					<a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+						<span class="label" data-bind=" text: keyFrames().indexOf(selectedKeyFrame()) , style: { background: selectedKeyFrame() ?  selectedKeyFrame().color : '' }"> </span>
+						<span data-bind=" text: selectedKeyFrame() ?  selectedKeyFrame().name : 'select keyframe' ">selected Animation</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" data-bind="template: { name: 'keyframe-dropdown', foreach: keyFrames, as: 'keyframe'  }">
+
+					</ul>
+				</div>
+			</div>
+			<div class="btn-toolbar"  data-bind="css: { disabled: !seletedArea() }" >
+				<div class="tabbable">
+					<ul class="nav nav-pills pills-small">
+						<li><a class="btn-small" href="#tab1" data-toggle="tab">BUILDER</a></li>
+						<li><a href="#tab2" data-toggle="tab">KEYFRAME OPTIONS</a></li>
+						<li><a href="#tab3" data-toggle="tab">OPTIONS</a></li>
+						<li><a href="#tab4" data-toggle="tab">RESULT</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="under-pages">
+		<div class="container">
+			<div class="tab-content">
+				<div class="tab-pane" id="tab1" data-bind="template: { name: 'builder-page' }">
+
+				</div>
+				<div class="tab-pane" id="tab2" data-bind="template: { name: 'keyframe-options-page' }">
+
+				</div>
+				<div class="tab-pane" id="tab3">
+					<p>OPTIONS</p>
+				</div>
+				<div class="tab-pane" id="tab4">
+					<p>RESULT</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
