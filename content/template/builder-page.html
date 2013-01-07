@@ -6,8 +6,14 @@
 
 			<label class="checkbox">
 				<input type="checkbox" value=""
-					   data-bind=" checked: selectedKeyFrame() ? selectedKeyFrame().isDraw : false">
+					   data-bind=" checked: isDraw ">
 				is Draw
+			</label>
+
+			<label class="checkbox">
+				<input type="checkbox" value=""
+					   data-bind=" checked: isChain">
+				is Chain
 			</label>
 
 

@@ -47,10 +47,10 @@
 			var bodyRect = document.body.getBoundingClientRect(),
 				elRect = el.getBoundingClientRect();
 			return {
-				left: elRect.left - bodyRect.left,
-				top: elRect.top - bodyRect.top,
-				width: elRect.width,
-				height: elRect.height
+				left: parseInt(elRect.left - bodyRect.left),
+				top: parseInt(elRect.top - bodyRect.top),
+				width: parseInt(elRect.width),
+				height: parseInt(elRect.height)
 			}
 		},
 		setRectangle:function(el, rect){

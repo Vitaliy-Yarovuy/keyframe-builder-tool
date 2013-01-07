@@ -57,7 +57,7 @@
 	position: absolute;
 	border-radius: 2px;
 	border: 2px solid yellow;
-	background: rgba(255,255,0,0.3);
+	background: rgba(255,255,0,0.2);
 	left: -50px;
 	bottom: -50px;
 	width: 10px;
@@ -68,14 +68,17 @@
 
 .keyb-target{
 	border: 2px solid #4169e1;
-	background: rgba(65,105,225,0.3);
+	background: rgba(65,105,225,0.2);
 	-webkit-transition: all 100ms;
 }
 
 .keyb-target.active{
 	pointer-events: auto;
 }
-
+.keyb-target canvas{
+	width: 100%;
+	height: 100%;
+}
 
 /*******************  keyframe-options-page   ***********************/
 
@@ -95,6 +98,7 @@
 
 #keyb .keyframe-options-page .form-horizontal .control-label{
 	width: 120px;
+	padding-top: 2px;
 }
 
 #keyb .keyframe-options-page .form-horizontal .controls{
