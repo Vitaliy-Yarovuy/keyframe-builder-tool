@@ -5,7 +5,6 @@
 	function KeyFrames(el){
 		this.el = el;
 		this.init();
-		this.setup();
 	}
 
 	KeyFrames.prototype.init = function(){
@@ -21,22 +20,28 @@
 		this.color = ko.observable(utils.generateColor());
 		this.isInherited = ko.observable(false);
 		this.isText = ko.observable(true);
-		this.isRotate = ko.observable(true);
+		this.isRotate = ko.observable(false);
 		this.angleK = ko.observable(0.0);
 		this.isChain = ko.observable(false);
 
 		this.frames = [];
 		this.lines = [];
-		this.frameEls = [];
 
 		this.step.subscribe(_.debounce(function(){
 			that.fillFrames();
 		},400));
+		this.isChain.subscribe(function(value){
+			that.frames.forEach(function(frame){
+				frame.setFixedChain(value);
+			});
+		});
+		this.isRotate.subscribe(function(value){
+			that.frames.forEach(function(frame){
+				frame.setRotateFlag(value);
+			});
+		});
 	};
 
-	KeyFrames.prototype.setup = function(){
-		app.canvas.on('object:moving',this.move.bind(this));
-	};
 
 	KeyFrames.prototype.setPoints = function(points){
 		this.originPoints = points;
@@ -62,21 +67,9 @@
 		for(i = 0; i < this.frames.length; i++){
 			this.frames[i].link(this.frames[i - 1],this.frames[i + 1]);
 		}
-		this.frameEls = this.frames.map(function(frame){
-			return frame.el;
-		});
+		app.canvas.renderAll();
 	};
 
-
-	KeyFrames.prototype.move = function(e){
-		var frame,
-			index = this.frameEls.indexOf(e.target);
-		if(index !== -1){
-			frame = this.frames[index];
-			frame[this.isChain()?"updateChain":"update"]();
-			app.canvas.renderAll();
-		}
-	};
 
 
 

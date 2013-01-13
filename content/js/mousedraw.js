@@ -30,7 +30,8 @@
 		var canvas = document.createElement("canvas");
 		this.el.appendChild(canvas);
 		this.canvas = new fabric.Canvas(canvas,{
-			selection: false
+			selection: false,
+			HOVER_CURSOR: 'pointer'
 		});
 	};
 

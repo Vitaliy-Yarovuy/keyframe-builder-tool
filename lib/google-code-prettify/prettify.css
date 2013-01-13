@@ -1,0 +1,37 @@
+#keyb .com { color: #93a1a1; }
+#keyb .lit { color: #195f91; }
+#keyb .pun,
+#keyb .opn,
+#keyb .clo { color: #93a1a1; }
+#keyb .fun { color: #dc322f; }
+#keyb .str,
+#keyb .atv { color: #D14; }
+#keyb .kwd,
+#keyb .linenums .tag { color: #1e347b; }
+#keyb .typ,
+#keyb .atn,
+#keyb .dec,
+#keyb .var { color: teal; }
+#keyb .pln { color: #48484c; }
+
+#keyb .prettyprint {
+  padding: 8px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
+#keyb .prettyprint.linenums {
+  -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+     -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+          box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+#keyb ol.linenums {
+  margin: 0 0 0 33px; /* IE indents via margin-left */
+}
+#keyb ol.linenums li {
+  padding-left: 12px;
+  color: #bebec5;
+  line-height: 18px;
+  text-shadow: 0 1px 0 #fff;
+}

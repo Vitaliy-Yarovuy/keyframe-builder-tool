@@ -21,7 +21,8 @@
 			"matches":["http://*/*","https://*/*"],
 			"css":[
 				"lib/bootstrap/css/bootstrap.css",
-				"content/css/style.css"
+				"content/css/style.css",
+				"lib/google-code-prettify/prettify.css"
 
 			],
 			"js":[
@@ -29,6 +30,7 @@
 				"lib/bootstrap/js/bootstrap.js",
 				"lib/knockout-2.2.0.debug.js",
 				"lib/underscore.js",
+				"lib/google-code-prettify/prettify.js",
 				"lib/async.js",
 				"lib/fabric.js",
 				"content/js/utils.js",
@@ -36,6 +38,7 @@
 				"content/js/mouseselector.js",
 				"content/js/mousedraw.js",
 				"content/js/frame.js",
+				"content/js/framepoint.js",
 				"content/js/keyframes.js",
 				"content/js/builder.js",
 				"content/js/init.js"

@@ -60,6 +60,11 @@
 		getAngle: function(p1, p2){
 			var diff = p2.subtract(p1);
 			return this.normalizeAngle(Math.atan2(diff.y, diff.x));
+		},
+
+		getPointFromPolarSystem: function(angle, length, center){
+			center = center || new fabric.Point(0, 0);
+			return center.add(new fabric.Point(length * Math.cos(angle), length * Math.sin(angle)));
 		}
 
 	};
