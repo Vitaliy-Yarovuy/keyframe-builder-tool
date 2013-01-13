@@ -46,7 +46,12 @@
 				dLength = length * percent;
 			return this.approximateLine(points,dLength);
 		},
-
+		toRadian: function(angle){
+			return ((angle % 360) * Math.PI / 180);
+		},
+		toDegree: function(angle){
+			return (angle * 180 / Math.PI ) % 360;
+		},
 		normalizeAngle: function( val){
 			while(val < 0 ){
 				val+= 2 * Math.PI;
@@ -56,11 +61,21 @@
 			}
 			return val;
 		},
-
+		getAngleDiff:function(alpha,beta){
+			var diff = beta - alpha;
+			if(diff > Math.PI){
+				diff -= Math.PI*2;
+			}
+			if(diff < -Math.PI){
+				diff += Math.PI*2;
+			}
+			return diff;
+		},
 		getAngle: function(p1, p2){
 			var diff = p2.subtract(p1);
 			return this.normalizeAngle(Math.atan2(diff.y, diff.x));
 		},
+
 
 		getPointFromPolarSystem: function(angle, length, center){
 			center = center || new fabric.Point(0, 0);

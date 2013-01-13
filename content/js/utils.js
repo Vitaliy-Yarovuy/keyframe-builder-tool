@@ -43,6 +43,24 @@
 				})
 			},callback);
 		},
+		includeStyle:function(path,replaceObj,callback){
+			var key,reg;
+			$.ajax(path,{
+				success:function(data, textStatus, jqXHR){
+					for(key in replaceObj){
+						if(replaceObj.hasOwnProperty(key)){
+							reg = new RegExp(key,"g");
+							data = data.replace(reg,replaceObj[key]);
+						}
+					}
+					var template = utils.createElement("style",{
+						"innerHTML": data
+					});
+					document.body.appendChild(template);
+					callback && callback();
+				}
+			})
+		},
 		getRectangle:function(el){
 			var bodyRect = document.body.getBoundingClientRect(),
 				elRect = el.getBoundingClientRect();

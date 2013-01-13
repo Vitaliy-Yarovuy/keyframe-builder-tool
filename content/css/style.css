@@ -121,3 +121,9 @@
 	margin-left: 66px;
 }
 
+/*******************  keyframe-result-page   ***********************/
+
+#keyb .CodeMirror pre {
+	line-height: inherit;
+	color: inherit;
+}
