@@ -1,6 +1,6 @@
 
 <div class="row builder-page">
-	<div class="span3">
+	<div class="span2">
 		<form class="form-horizontal">
 			<!--COLUMN 1--->
 
@@ -24,7 +24,10 @@
 				<button class="btn">
 					<i class="icon-step-backward"></i>
 				</button>
-				<button class="btn">
+				<button class="btn" data-bind="
+					css:{ active: framePlayerManager.selectedPlayer() ? framePlayerManager.selectedPlayer().isPlay : false },
+					click: framePlayerManager.togglePlayer
+				">
 					<i class="icon-play"></i>
 					/
 					<i class="icon-stop"></i>

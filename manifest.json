@@ -42,6 +42,7 @@
 				"content/js/frame.js",
 				"content/js/framepoint.js",
 				"content/js/keyframes.js",
+				"content/js/keyframeplayer.js",
 				"content/js/builder.js",
 				"content/js/init.js"
 			]

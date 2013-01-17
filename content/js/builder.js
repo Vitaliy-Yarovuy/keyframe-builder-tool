@@ -12,6 +12,7 @@
 		this.initModel();
 		this.initSelector();
 		this.initDrawer();
+		this.initPlayer();
 	};
 
 	BuilderModel.prototype.initModel = function(){
@@ -20,11 +21,11 @@
 		this.seletedArea = ko.observable(null);
 		this.keyFrames =  ko.observableArray([]);
 		this.selectedKeyFrame =  ko.observable(null);
-		this.isDraw =  ko.observable(true);
+		this.isDraw = ko.observable(true);
 		this.isChain =  ko.computed({
 			read:function(){
 				var arr = this.keyFrames();
-				return arr.length ? arr[0].isChain() : false ;
+				return arr.length ? arr[0].isChain() : false;
 			},
 			write: function(value){
 				return this.keyFrames().forEach(function(keyFrame){
@@ -51,6 +52,10 @@
 		this.seletedArea.subscribe(function(value){
 			that.targetArea.classList[value?"add":"remove"]("active");
 		});
+	};
+
+	BuilderModel.prototype.initPlayer = function(){
+		this.framePlayerManager = new FramePlayerManager(this.keyFrames,this.selectedKeyFrame );
 	};
 
 
@@ -92,14 +97,15 @@
 	BuilderModel.prototype.fillKeyFrames = function(){
 		var isChain = this.isChain(),
 			children = this.seletedArea().children;
-		this.keyFrames.removeAll();
+		this.selectedKeyFrame(null);
+		this.keyFrames.removeAll().forEach(function(keyframe){
+			keyframe.remove();
+		});
 		_.forEach(children,function(item){
 			this.keyFrames.push(new KeyFrames(item));
 		},this);
 		this.isChain(isChain);
 	};
-
-
 
 
 	window.BuilderModel = BuilderModel;

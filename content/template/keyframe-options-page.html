@@ -1,7 +1,5 @@
-
-
 <div class="row keyframe-options-page">
-	<div class="span3">
+	<div class="span_x">
 		<form class="form-horizontal">
 			<!--COLUMN 1--->
 
@@ -9,27 +7,27 @@
 				<label class="control-label label-small" for="inputName">name</label>
 				<div class="controls">
 					<input class="input-small" type="text" id="inputName" placeholder="name"
-						data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().name : 'unknown', valueUpdate: 'afterkeydown' ">
+						   data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().name : 'unknown', valueUpdate: 'afterkeydown' ">
 				</div>
 			</div>
 
 			<div class="control-group">
 				<label class="control-label label-small">color</label>
 				<span class="label span2 input-small" style="line-height:20px;"
-					data-bind=" style: { background: selectedKeyFrame() ?  selectedKeyFrame().color : '' } "> &nbsp;</span>
+					  data-bind=" style: { background: selectedKeyFrame() ?  selectedKeyFrame().color : '' } "> &nbsp;</span>
 			</div>
 
 			<div class="control-group">
 				<label class="control-label label-small" for="inputStep">step</label>
 				<div class="controls">
 					<input class="input-small" type="number" id="inputStep" min="1" max="50" placeholder="1-50"
-						data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().step : 1, valueUpdate: 'afterkeydown' ">
+						   data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().step : 1, valueUpdate: 'afterkeydown' ">
 				</div>
 			</div>
 
 		</form>
 	</div>
-	<div class="span4">
+	<div class="span_x">
 		<form class="form-horizontal">
 			<!--COLUMN 2--->
 
@@ -40,12 +38,12 @@
 					<div class="input-prepend">
 						<span class="add-on">X</span>
 						<input class="span1" id="inputStartOffsetX" type="number"
-							data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().offset.x : 0, valueUpdate: 'afterkeydown' ">
+							   data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().offset.x : 0, valueUpdate: 'afterkeydown' ">
 					</div>
 					<div class="input-prepend">
 						<span class="add-on">Y</span>
 						<input class="span1" id="inputStartOffsetY" type="number"
-							data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().offset.y : 0, valueUpdate: 'afterkeydown' ">
+							   data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().offset.y : 0, valueUpdate: 'afterkeydown' ">
 					</div>
 				</div>
 			</div>
@@ -54,7 +52,7 @@
 				<label class="control-label" for="inputStartAngle">start angle</label>
 				<div class="controls">
 					<input class="input-small" type="number" id="inputStartAngle" min="0" max="360" placeholder="0-360"
-						data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().startAngle : 0, valueUpdate: 'afterkeydown' ">
+						   data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().startAngle : 0, valueUpdate: 'afterkeydown' ">
 				</div>
 			</div>
 
@@ -62,50 +60,48 @@
 				<label class="control-label" for="inputAngleCoeff">angle coefficient</label>
 				<div class="controls">
 					<input class="input-small" type="number" id="inputAngleCoeff" min="0" max="10" step="0.05" placeholder="0-10"
-						data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().angleK : 0, valueUpdate: 'afterkeydown' ">
+						   data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().angleK : 0, valueUpdate: 'afterkeydown' ">
 				</div>
 			</div>
 
 		</form>
 	</div>
-	<div class="span2">
+	<div class="span_x">
 		<form class="form-horizontal">
 			<!--COLUMN 3--->
+			<div class="control-group">
+				<label class="control-label label-small" for="inputDuration">duration</label>
+				<div class="controls">
+					<div class="input-append">
+						<input class="input-small" type="number" id="inputDuration" min="100" max="10000" step="100" placeholder="0-10 000"
+							   data-bind=" value: selectedKeyFrame() ? selectedKeyFrame().duration : 0, valueUpdate: 'afterkeydown' ">
+						<span class="add-on">ms</span>
+					</div>
+				</div>
+			</div>
 
+		</form>
+	</div>
+	<div class="span_x">
+		<form class="form-horizontal">
 			<label class="checkbox">
 				<input type="checkbox" value=""
-					data-bind=" checked: selectedKeyFrame() ? selectedKeyFrame().isInherited : false ">
+					   data-bind=" checked: selectedKeyFrame() ? selectedKeyFrame().isInherited : false ">
 				is inherit
 			</label>
 
 			<label class="checkbox">
 				<input type="checkbox" value=""
-					data-bind=" checked: selectedKeyFrame() ? selectedKeyFrame().isText : false ">
+					   data-bind=" checked: selectedKeyFrame() ? selectedKeyFrame().isText : false ">
 				is text
 			</label>
 
 
 			<label class="checkbox">
 				<input type="checkbox" value=""
-					data-bind=" checked: selectedKeyFrame() ? selectedKeyFrame().isRotate : false ">
+					   data-bind=" checked: selectedKeyFrame() ? selectedKeyFrame().isRotate : false ">
 				is rotate
 			</label>
 		</form>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

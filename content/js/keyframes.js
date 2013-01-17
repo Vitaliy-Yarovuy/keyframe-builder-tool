@@ -18,6 +18,7 @@
 		};
 		this.startAngle = ko.observable(0.0);
 		this.color = ko.observable(utils.generateColor());
+		this.duration = ko.observable(1000);
 		this.isInherited = ko.observable(false);
 		this.isText = ko.observable(true);
 		this.isRotate = ko.observable(false);
@@ -48,7 +49,6 @@
 			}
 		});
 	};
-
 
 	KeyFrames.prototype.setPoints = function(points){
 		this.originPoints = points;
@@ -114,32 +114,9 @@
 	};
 
 
-/******************************//*
-
-	for(;i<points.length-1;i++){
-		var calcAngle;
-		angle=PointMath.getAngle(points[i],points[i+1]);
-		var dAngle=angle-lastAngle;
-		if(PointMath.getSign(angle)==PointMath.getSign(lastAngle) || Math.abs(angle-lastAngle)< Math.PI ){
-			calcAngle=(2*baseAngle+dAngle*angleK-Math.PI)/2;
-		}
-		else{
-			if(Math.abs(dAngle)>Math.PI){
-				dAngle-=PointMath.getSign(angle)*Math.PI*2;
-			}
-			var sign=PointMath.getSignOfMaxAbs(angle,lastAngle);
-			calcAngle=(2*baseAngle+dAngle*angleK-Math.PI)/2;
-		};
-		this.items.add(new LineItem({point:points[i],text:(i%5==0?i.toString():""),angle:calcAngle}),{silent:true});
-		baseAngle=baseAngle+dAngle*angleK;
-		lastAngle=angle;
-	}
-
-	/****************************/
-
-
-
-
+	KeyFrames.prototype.remove =function(){
+		this.clearFrames();
+	};
 
 		window.KeyFrames = KeyFrames;
 })();

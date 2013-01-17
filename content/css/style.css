@@ -87,14 +87,15 @@
 	margin-bottom: 5px;
 }
 
-#keyb .keyframe-options-page .form-horizontal .input-prepend .add-on,
+#keyb .keyframe-options-page .form-horizontal .add-on,
 #keyb .keyframe-options-page .form-horizontal input{
 	line-height: 14px;
 	height: 14px;
 }
 
-
-
+#keyb .keyframe-options-page .form-horizontal  .checkbox{
+	white-space: nowrap;
+}
 
 #keyb .keyframe-options-page .form-horizontal .control-label{
 	width: 120px;
