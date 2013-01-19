@@ -2,14 +2,16 @@
 	"user strict";
 
 
-	function KeyFrames(el){
+	function KeyFrames(el,parent){
 		this.el = el;
+		this.parent = parent;
 		this.init();
 	}
 
 	KeyFrames.prototype.init = function(){
 		var that = this;
 
+		this.domOffset = utils.getOffset(this.el,this.parent);
 		this.name = ko.observable(utils.generateName("animation"));
 		this.step = ko.observable(10);
 		this.offset = {

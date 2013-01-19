@@ -93,6 +93,7 @@
 	height: 14px;
 }
 
+#keyb .builder-page .form-horizontal  .checkbox,
 #keyb .keyframe-options-page .form-horizontal  .checkbox{
 	white-space: nowrap;
 }

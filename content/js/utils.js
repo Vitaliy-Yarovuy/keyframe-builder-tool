@@ -71,6 +71,11 @@
 				height: parseInt(elRect.height)
 			}
 		},
+		getOffset:function(el,parent){
+			var parentRect = parent.getBoundingClientRect(),
+				elRect = el.getBoundingClientRect();
+			return new fabric.Point(elRect.left - parentRect.left,elRect.top - parentRect.top);
+		},
 		setRectangle:function(el, rect){
 			["top","left","width","height"].forEach(function(key){
 				el.style[key] = rect[key] + "px";

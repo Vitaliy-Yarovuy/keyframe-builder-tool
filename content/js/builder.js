@@ -102,7 +102,7 @@
 			keyframe.remove();
 		});
 		_.forEach(children,function(item){
-			this.keyFrames.push(new KeyFrames(item));
+			this.keyFrames.push(new KeyFrames(item,this.seletedArea()));
 		},this);
 		this.isChain(isChain);
 	};
