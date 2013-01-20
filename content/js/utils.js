@@ -89,7 +89,23 @@
 				names[name]=0;
 			}
 			return name+"-"+(names[name]++);
+		},
+		setTranslate:function(el,point,angle,time){
+			var transform;
+			time = time || 0;
+			el.style.webkitTransitionDuration = time + "ms";
+			transform = "translate3d("+point.x+"px, "+point.y+"px, 0px)";
+			if(angle){
+				transform += " rotate("+angle+"deg)";
+			}
+			el.style.webkitTransform = transform;
+		},
+		removeTranslate:function(el,time){
+			time = time || 0;
+			el.style.webkitTransitionDuration = time + "ms";
+			el.style.webkitTransform = "";
 		}
+
 	};
 	window.utils = utils;
 })(window.jQuery);

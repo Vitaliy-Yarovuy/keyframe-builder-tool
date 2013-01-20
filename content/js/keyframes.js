@@ -1,7 +1,6 @@
 (function(){
 	"user strict";
 
-
 	function KeyFrames(el,parent){
 		this.el = el;
 		this.parent = parent;
@@ -11,6 +10,7 @@
 	KeyFrames.prototype.init = function(){
 		var that = this;
 
+		this.frameSelectIndex = -1;
 		this.domOffset = utils.getOffset(this.el,this.parent);
 		this.name = ko.observable(utils.generateName("animation"));
 		this.step = ko.observable(10);
@@ -28,7 +28,6 @@
 		this.isChain = ko.observable(false);
 
 		this.frames = [];
-		this.lines = [];
 
 		this.onMove = _.debounce(this._onMove.bind(this),50);
 
@@ -52,6 +51,10 @@
 		});
 	};
 
+	KeyFrames.prototype.getUserOffset = function(){
+		return new fabric.Point(this.offset.x(),this.offset.y());
+	};
+
 	KeyFrames.prototype.setPoints = function(points){
 		this.originPoints = points;
 		this.fillFrames();
@@ -63,6 +66,29 @@
 			frame.remove();
 		});
 		this.frames = [];
+	};
+
+	KeyFrames.prototype.selectFrame = function(index,isRelative){
+		index = index || 0;
+		if(isRelative){
+			index += this.frameSelectIndex;
+		}
+		if(index  !== -1 || isRelative ){
+			if(index < 0 ){
+				index = 0 ;
+			}
+			if(index >= this.frames.length){
+				index = this.frames.length - 1;
+			}
+		}
+		this.frames[this.frameSelectIndex] && this.frames[this.frameSelectIndex].setSelectFlag(false);
+		this.frames[index] && this.frames[index].setSelectFlag(true);
+		this.frameSelectIndex = index;
+		app.canvas.renderAll();
+	};
+
+	KeyFrames.prototype.getSelectedFrame = function(){
+		return this.frames[this.frameSelectIndex];
 	};
 
 	KeyFrames.prototype.fillFrames = function(){
@@ -79,6 +105,9 @@
 		},this);
 		for(i = 0; i < this.frames.length; i++){
 			this.frames[i].link(this.frames[i - 1],this.frames[i + 1]);
+		}
+		if(this.frameSelectIndex !== -1){
+			this.selectFrame();
 		}
 		app.canvas.renderAll();
 	};
@@ -100,7 +129,7 @@
 				calcAngle = baseAngle - diffAngle * angleK/2 ;
 				baseAngle = baseAngle - diffAngle * angleK ;
 			}
-			console.log("angle",mathPoint.toDegree(angle),mathPoint.toDegree(diffAngle));
+			//console.log("angle",mathPoint.toDegree(angle),mathPoint.toDegree(diffAngle));
 			lastAngle = angle;
 			this.frames[i].setAngle(mathPoint.normalizeAngle(calcAngle + Math.PI/2));
 		}
@@ -115,10 +144,9 @@
 		}
 	};
 
-
 	KeyFrames.prototype.remove =function(){
 		this.clearFrames();
 	};
 
-		window.KeyFrames = KeyFrames;
+	window.KeyFrames = KeyFrames;
 })();

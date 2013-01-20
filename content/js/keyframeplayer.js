@@ -8,61 +8,59 @@
 
 
 	FramePlayer.prototype.init = function(){
+		this.isSelect = false;
 		this.isPlay = ko.observable(false);
+	};
+
+	FramePlayer.prototype.select = function(){
+		this.isSelect = true;
+		this.keyFrame.selectFrame();
+		this.applyTranslateToElement();
+	};
+
+	FramePlayer.prototype.unSelect = function(){
+		this.isSelect = false;
+		this.keyFrame.selectFrame(-1);
+		this.resetElementTranslate();
 	};
 
 	FramePlayer.prototype.remove = function(){
 		this.keyFrame = null;
+		this.resetElementTranslate();
 	};
 
 	FramePlayer.prototype.nextFrame = function(){
-		alert("next frame");
+		this.keyFrame.selectFrame(1, true);
+		this.applyTranslateToElement();
 	};
 
 	FramePlayer.prototype.prevFrame = function(){
-		alert("prev frame");
+		this.keyFrame.selectFrame(- 1, true);
+		this.applyTranslateToElement();
 	};
 
-
-
-	function FramePlayerManager(keyframes,selectedKeyFrame){
-		this.framePlayers = [];
-		this.keyframes = keyframes;
-		this.selectedKeyFrame = selectedKeyFrame;
-		this.init();
-	};
-
-	FramePlayerManager.prototype.init = function(){
-		var that = this;
-		this.selectedPlayer = ko.observable(null);
-		this.selectedKeyFrame.subscribe(function(keyframe){
-			var player = that.framePlayers.filter(function(player){
-				return player.keyFrame === keyframe;
-			})[0];
-			that.selectedPlayer(player);
-		});
-		this.keyframes.subscribe(_.debounce(this.fillFramePlayers.bind(this),500));
-		this.togglePlayer = this.togglePlayer.bind(this);
-	};
-
-
-	FramePlayerManager.prototype.fillFramePlayers = function(){
-		this.framePlayers.forEach(function(player){
-			player.remove();
-		});
-		this.framePlayers = this.keyframes().map(function(keyframe){
-			return new FramePlayer(keyframe);
-		});
-	};
-
-
-	FramePlayerManager.prototype.togglePlayer = function(){
-		var player = this.selectedPlayer();
-		if(player){
-			player.isPlay(!player.isPlay());
+	FramePlayer.prototype.applyTranslateToElement = function(time){
+		var selectedFrame = this.keyFrame.getSelectedFrame(),
+			framePosition,elPosition,angle,isRotate;
+		if(!selectedFrame){
+			return false;
 		}
+		framePosition = selectedFrame.getPosition();
+		elPosition = framePosition.subtract(this.keyFrame.domOffset)
+			.subtract(this.keyFrame.getUserOffset());
+		isRotate = this.keyFrame.isRotate();
+		if(isRotate){
+			angle = selectedFrame.getAngle();
+			angle = mathPoint.toDegree(angle);
+		}
+		utils.setTranslate(this.keyFrame.el,elPosition,angle,time);
 	};
+
+	FramePlayer.prototype.resetElementTranslate = function(time){
+		utils.removeTranslate(this.keyFrame.el,time);
+	};
+
+
 
 	window.FramePlayer = FramePlayer;
-	window.FramePlayerManager = FramePlayerManager;
 })();

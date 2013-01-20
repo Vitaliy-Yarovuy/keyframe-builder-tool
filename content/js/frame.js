@@ -54,12 +54,20 @@
 		this.framePoint.setRotateFlag(value);
 	};
 
+	Frame.prototype.setSelectFlag = function(value){
+		this.framePoint.setSelectFlag(value);
+	};
+
 	Frame.prototype.getPosition = function(){
 		return this.framePoint.getPosition();
 	};
 
 	Frame.prototype.setAngle = function(value){
 		this.framePoint.setAngle(value);
+	};
+
+	Frame.prototype.getAngle = function(){
+		return this.framePoint.getAngle();
 	};
 
 	window.Frame = Frame;

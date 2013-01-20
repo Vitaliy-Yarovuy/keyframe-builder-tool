@@ -70,7 +70,6 @@ var FramePointRotateTool = fabric.util.createClass(fabric.Object, fabric.Observa
 		},
 
 		_updatePosition:function(){
-			console.log("on move position");
 			var framePoint = this.framePoint.getPosition(),
 				point = mathPoint.getPointFromPolarSystem(this.angle,this.RADIUS*4,framePoint);
 			this.set({
@@ -120,6 +119,10 @@ var FramePointRotateTool = fabric.util.createClass(fabric.Object, fabric.Observa
 				angle:value
 			});
 			this._updatePosition();
+		},
+
+		getAngle: function(){
+			return this.angle;
 		}
 
 	});
@@ -136,8 +139,8 @@ var FramePointRotateTool = fabric.util.createClass(fabric.Object, fabric.Observa
 			});
 			this.isFixedChain = false;
 			this.isRotate = false;
+			this.isSelect = false;
 
-			this.angle = 0;
 			this.chainLength = 0;
 
 			this.hasControls = false;
@@ -152,7 +155,6 @@ var FramePointRotateTool = fabric.util.createClass(fabric.Object, fabric.Observa
 		},
 
 		_render: function(ctx) {
-			var anglePoint;
 			ctx.lineWidth = this.strokeWidth;
 			if(this.next){
 				ctx.beginPath();
@@ -166,6 +168,15 @@ var FramePointRotateTool = fabric.util.createClass(fabric.Object, fabric.Observa
 			ctx.closePath();
 			ctx.fill();
 			ctx.stroke();
+
+			if( this.isSelect ){
+				ctx.strokeWidth = 2;
+				ctx.beginPath();
+				ctx.strokeStyle = "#fff";
+				ctx.arc(0, 0, this.RADIUS + 2, 0, piBy2, false);
+				ctx.closePath();
+				ctx.stroke();
+			}
 		},
 
 		setFixedChain:function(isFix){
@@ -189,6 +200,12 @@ var FramePointRotateTool = fabric.util.createClass(fabric.Object, fabric.Observa
 					this.rotateTool.remove();
 					this.rotateTool = null;
 				}
+			}
+		},
+
+		setSelectFlag: function(isSelect){
+			if(this.isSelect !== isSelect){
+				this.isSelect = isSelect;
 			}
 		},
 
@@ -235,6 +252,10 @@ var FramePointRotateTool = fabric.util.createClass(fabric.Object, fabric.Observa
 
 		setAngle:function(value){
 			this.rotateTool && this.rotateTool.setAngle(value);
+		},
+
+		getAngle:function(){
+			return this.rotateTool && this.rotateTool.getAngle();
 		}
 
 	});
