@@ -19,10 +19,5 @@
 		wrapper.classList.toggle("active");
 		sendResponse(true);
 
-		var editor = CodeMirror.fromTextArea(document.querySelector(".css-code"), {
-			mode: "css",
-			lineNumbers: true,
-			mode:"text/css"
-		});
 	});
 })();

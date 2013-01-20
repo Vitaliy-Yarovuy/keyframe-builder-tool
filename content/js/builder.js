@@ -13,6 +13,7 @@
 		this.initSelector();
 		this.initDrawer();
 		this.initPlayer();
+		this.initGenerator();
 	};
 
 	BuilderModel.prototype.initModel = function(){
@@ -56,6 +57,16 @@
 
 	BuilderModel.prototype.initPlayer = function(){
 		this.framePlayerManager = new FramePlayerManager(this.keyFrames,this.selectedKeyFrame );
+	};
+
+	BuilderModel.prototype.initGenerator = function(){
+		var that = this;
+		setTimeout(function(){
+			that.cssGenerator = new CssGenerator(that.el.querySelector(".result-page .css-code"));
+			that.el.querySelector("a[href='#tab4']").addEventListener("click",function(){
+				that.cssGenerator.generate();
+			});
+		},0);
 	};
 
 

@@ -38,6 +38,7 @@
 				"content/js/utils.js",
 				"content/js/mathpoint.js",
 				"content/js/mouseselector.js",
+				"content/js/cssgenerator.js",
 				"content/js/mousedraw.js",
 				"content/js/frame.js",
 				"content/js/framepoint.js",

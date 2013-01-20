@@ -30,7 +30,7 @@
 			onMove: this.onMove
 		});
 
-		this.angle = ko.observable(0.0);
+//		this.angle = ko.observable(0.0);
 		this.css = ko.observable("");
 	};
 
